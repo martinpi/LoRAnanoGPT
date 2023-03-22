@@ -184,7 +184,8 @@ if block_size < model.config.block_size:
     model.crop_block_size(block_size)
     model_args['block_size'] = block_size # so that the checkpoint will have the right value
 if use_lora:
-    minlora.add_lora(model, lora_config=lora_config)
+#    minlora.add_lora(model, lora_config=lora_config)
+    minlora.add_lora(model)
     minlora.tie_weights(linear=model.lm_head, embedding=model.transformer.wte)
 model.to(device)
 
